@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+ultralytics
+deep-sort-realtime
+opencv-python-headless
+python-multipart
+aiofiles
+pydantic
+websockets
+jinja2

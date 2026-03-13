@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoTrack AI - Perception Module</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Orbitron:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="top-nav">
+            <div class="logo">
+                <span class="neon-text">AUTOTRACK</span>
+                <span class="sub-text">AI [PERCEPTION MODULE]</span>
+            </div>
+            <div class="system-status">
+                <div class="status-indicator online"></div>
+                <span>SYSTEM ONLINE</span>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="dashboard">
+            <!-- Sidebar for Modes -->
+            <aside class="sidebar control-panel">
+                <h2 class="panel-title">INPUT MODES</h2>
+                
+                <div class="mode-selector">
+                    <button class="mode-btn active" id="btn-webcam" onclick="setMode('webcam')">
+                        <i class="icon">[ ]</i> WEBCAM STREAM
+                    </button>
+                    <button class="mode-btn" id="btn-video" onclick="setMode('video')">
+                        <i class="icon">[<]</i> UPLOAD VIDEO
+                    </button>
+                    <button class="mode-btn" id="btn-image" onclick="setMode('image')">
+                        <i class="icon">[img]</i> UPLOAD IMAGE
+                    </button>
+                </div>
+
+                <!-- Hidden inputs for file upload -->
+                <div id="upload-controls" class="hidden glass-panel">
+                    <input type="file" id="file-upload" accept="video/mp4,video/x-m4v,video/*,image/*" />
+                    <button id="process-btn" class="action-btn" onclick="processUpload()">PROCESS FILE</button>
+                    <div id="upload-status" class="loading hidden">Loading... <div class="spinner"></div></div>
+                </div>
+                
+                <!-- System Config / Info -->
+                <div class="sys-info">
+                    <h2 class="panel-title">SYSTEM SPECS</h2>
+                    <ul>
+                        <li><span class="label">MODEL:</span> <span class="value neon-blue">YOLOv8n</span></li>
+                        <li><span class="label">TRACKER:</span> <span class="value neon-blue">DeepSORT</span></li>
+                        <li><span class="label">RUNTIME:</span> <span class="value neon-cyan">CPU (Optimized)</span></li>
+                    </ul>
+                </div>
+            </aside>
+
+            <!-- Video Feed Panel -->
+            <section class="video-panel">
+                <div class="hud-container">
+                    <div class="corner corner-tl"></div>
+                    <div class="corner corner-tr"></div>
+                    <div class="corner corner-bl"></div>
+                    <div class="corner corner-br"></div>
+                    
+                    <img id="main-display" src="/video_feed?mode=webcam" alt="Video Feed Waiting..." />
+                    <div class="crosshair"></div>
+                </div>
+            </section>
+
+            <!-- Telemetry Panel -->
+            <aside class="sidebar telemetry-panel">
+                <h2 class="panel-title">LIVE TELEMETRY</h2>
+                
+                <div class="metric-card">
+                    <div class="metric-label">FPS COUNTER</div>
+                    <div class="metric-value" id="t-fps">--</div>
+                    <div class="metric-bar"><div class="bar-fill" id="bar-fps" style="width: 0%"></div></div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-label">TOTAL OBJECTS DETECTED</div>
+                    <div class="metric-value neon-cyan" id="t-total">--</div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-label">ACTIVE TRACKED OBJECTS</div>
+                    <div class="metric-value highlight" id="t-active">--</div>
+                </div>
+                
+                <!-- Terminal / Logger -->
+                <div class="terminal">
+                    <div class="term-header">SYSTEM.LOG_</div>
+                    <div class="term-body" id="sys-log">
+                        <p>> AutoTrack System Initialized.</p>
+                        <p>> Awaiting feed...</p>
+                    </div>
+                </div>
+            </aside>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="/static/script.js"></script>
+    <script src="/static/animations.js"></script>
+</body>
+</html>
