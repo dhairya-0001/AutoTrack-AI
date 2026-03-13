@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # AutoTrack AI
 
 ## Project Overview
@@ -58,3 +59,7 @@ Navigate your browser to `http://localhost:8000`.
 ## Resume-ready Description
 **Multi-Object Vehicle & Pedestrian Tracking System**
 Built a real-time tracking application using YOLOv8n and DeepSORT for CPU-only execution under strict performance optimization constraints. Implemented frame-skipping, dynamic model evaluation rendering (`torch.no_grad()`), and FastAPIs's streaming abstractions. Deployed it directly to a responsive, custom-styled frontend GUI resembling a cutting-edge autonomous driving perception HUD.
+=======
+# AutoTrack-AI
+Developed a CPU-optimized multi-object tracking system using YOLOv8 and DeepSORT to track vehicles and pedestrians across video frames with unique IDs, deployed through an interactive FastAPI-powered dashboard for real-time traffic analytics.
+>>>>>>> f21cb4188d39acf6252248d9b8394b501475e624
